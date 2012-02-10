@@ -5,6 +5,104 @@
 #include <fstream>
 #include <Windows.h>
 
+namespace thread{
+	struct targ
+	{
+		int val;
+	};
+
+class Thread
+{
+	
+//DWORD WINAPI bla( void* param );
+//DWORD WINAPI blaa( void* param );
+//DWORD WINAPI blaaa( void* param );
+//
+//int main( void )
+//{
+//    core::thread::targ        ThreadArgs;
+//    int         ThreadIDs;
+//    HANDLE      Threads;
+//
+//		
+// 
+//        /* Sicherheitsstruktur ist nicht nötig, genauso wie die gesamte Größe des Threads für Speicher.
+//        ** Danach geben wir eine Addresse zur Funktion an und die Argumente als void-zeiger.
+//        ** Wir wollen den Thread einfach ganz normal, direkt starten, deswegen Param 5. 0.
+//        ** In dem letztem Parameter empfangen wir die Thread ID */
+//        Threads = CreateThread( NULL, 0, bla, (void*)&ThreadArgs, 0, (LPDWORD)&ThreadIDs );
+//		Threads = CreateThread( NULL, 0, blaa, (void*)&ThreadArgs, 0, (LPDWORD)&ThreadIDs );
+//		Threads = CreateThread( NULL, 0, blaaa, (void*)&ThreadArgs, 0, (LPDWORD)&ThreadIDs );
+// 
+//        CloseHandle( Threads );
+//        
+//        Sleep( 1000 );
+//    
+// 
+//    getchar();
+// 
+//    return 0;
+//}
+// 
+//DWORD WINAPI bla( void* param )
+//{
+//    core::thread::targ *threadarg = (core::thread::targ*)param;
+//	COORD coo;
+//	coo.X=12;
+//	coo.Y=0;
+//
+//	Sleep(100);
+//	capi.GotoCursorPos(coo);
+//	std::cout << "thread" << std::endl;
+//    
+//    
+//    return 0;
+//}
+//
+//DWORD WINAPI blaa( void* param )
+//{
+//    core::thread::targ *threadarg = (core::thread::targ*)param;
+//	COORD coo;
+//	coo.X=12;
+//	coo.Y=2;
+//
+//	Sleep(300);
+//	capi.GotoCursorPos(coo);
+//	std::cout << "thread" << std::endl;
+//    
+//    
+//    return 0;
+//}
+//
+//DWORD WINAPI blaaa( void* param )
+//{
+//    core::thread::targ *threadarg = (core::thread::targ*)param;
+//	COORD coo;
+//	coo.X=12;
+//	coo.Y=3;
+//
+//	Sleep(300);
+//	capi.GotoCursorPos(coo);
+//	std::cout << "thread" << std::endl;
+//    
+//    
+//    return 0;
+//}
+};
+}
+
+namespace math{
+	class Math 
+	{
+	private :
+
+	public :
+		static int add(int a2,int a1){return a2+a1;}
+		
+	};
+	
+}
+
 namespace core
 {
 
@@ -15,14 +113,15 @@ namespace core
 	ALIGN_RIGHT,
 	TITLE
 	};
-	
+
+namespace key{
 	enum MOUSE_BUTTON
 	{
 	KEY_M_RIGHT,
 	KEY_M_LEFT,
 	KEY_M_MIDDLE
 	};
-	
+}
 	struct MenuItem
 	{
 	const char *Caption;
@@ -47,7 +146,7 @@ namespace core
 	#define COLOR_YELLOW	0xE
 	#define COLOR_WHITE		0xF
 
-	class CoreAPI
+	class CoreAPI : public math::Math
 	{
 	private :
 
@@ -84,7 +183,7 @@ namespace core
 		void DrawCustomWindow(const char* Char, int cx, int cy, int cw, int ch,byte cBorderColor,int cnItems,MenuItem* Items);
 		void DrawCustomCenterWindow(const char* Char,int cy, int cw, int ch,byte cBorderColor,int cnItems,MenuItem *Items);
 
-		void CreateMouseButtonArea(int y_begin , int y_end, int x_begin, int x_end, MOUSE_BUTTON mb, void (*action)());
+		void CreateMouseButtonArea(int y_begin , int y_end, int x_begin, int x_end, core::key::MOUSE_BUTTON mb, void (*action)());
 
 		void Draw_unexpected_error_msg();
 		void Draw_costum_error_msg(const char* errortext);
@@ -100,5 +199,7 @@ namespace core
 		void setCursorPos(short Cursorx,short Cursory);
 		void setConsoleTitle(const char* ConsoleTitle);
 		void StrCheckSysData(std::string datapath,const char* accescode);
+		
+
 	};
 }

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -276,7 +278,7 @@ void CoreAPI::DrawCustomCenterWindow(const char* Char, int cy, int cw, int ch,by
 	DrawCustomWindow(Char,x,cy,cw,ch,cBorderColor,cnItems,Items);
 }
 
-void CoreAPI::CreateMouseButtonArea(int y_begin , int y_end, int x_begin, int x_end,MOUSE_BUTTON mb, void (*action)())
+void CoreAPI::CreateMouseButtonArea(int y_begin , int y_end, int x_begin, int x_end,core::key::MOUSE_BUTTON mb, void (*action)())
 {
 	y_begin=-1;
 	//y_end-1;
@@ -296,7 +298,7 @@ void CoreAPI::CreateMouseButtonArea(int y_begin , int y_end, int x_begin, int x_
 			{                                                      //state, WaitForMultipleObjects() will block
 																	//set to FALSE, the function will return if
 			case MOUSE_EVENT:    
-				if(mb == KEY_M_LEFT){             
+				if(mb == core::key::KEY_M_LEFT){             
 					if(
 						ir[i].Event.MouseEvent.dwButtonState & 0x01 &&
 						ir[i].Event.MouseEvent.dwMousePosition.X > x_begin &&
@@ -309,7 +311,7 @@ void CoreAPI::CreateMouseButtonArea(int y_begin , int y_end, int x_begin, int x_
 						return;
 					}
 				}
-				if(mb == KEY_M_RIGHT){             
+				if(mb == core::key::KEY_M_RIGHT){             
 					if(
 						ir[i].Event.MouseEvent.dwButtonState & 0x02 &&
 						ir[i].Event.MouseEvent.dwMousePosition.X > x_begin &&
@@ -322,7 +324,7 @@ void CoreAPI::CreateMouseButtonArea(int y_begin , int y_end, int x_begin, int x_
 						return;
 					}
 				}
-				if(mb == KEY_M_MIDDLE){             
+				if(mb == core::key::KEY_M_MIDDLE){             
 					if(
 						ir[i].Event.MouseEvent.dwButtonState & 0x04 &&
 						ir[i].Event.MouseEvent.dwMousePosition.X > x_begin &&
@@ -507,6 +509,8 @@ CoreAPI::CoreAPI(/*167,66*/short iScreenx,short iScreeny,const char* cConsoleTit
 
 	SetConsoleCursorInfo( hOut,
                               &cursorInfo );
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	text_align = ALIGN_LEFT;
 
 }
 
