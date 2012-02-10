@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 #pragma once
+=======
+/*
+This code was created by CoreAPITeam.
+Please do not use without copyright notice.
+For more information visit http://www.coreengine.de.vu/ (German Homepage)
+Thanks and have fun
+*/
+>>>>>>> d47dd189c1174d0d2a2875d24ab1b0a4c81c3d58
 
 #include <iostream>
 #include <string>

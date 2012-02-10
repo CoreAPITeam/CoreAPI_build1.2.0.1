@@ -1,3 +1,9 @@
+/*
+This code was created by CoreAPITeam.
+Please do not use without copyright notice.
+For more information visit http://www.coreengine.de.vu/ (German Homepage)
+Thanks and have fun
+*/
 #pragma once
 
 #include <iostream>
